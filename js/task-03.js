@@ -12,3 +12,49 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+// 1 спосіб
+// const makeGallery = images.forEach(({ url, alt }) => {
+//   const galleryEl = document.createElement('li');
+//   const imageEl = document.createElement('img');
+//   imageEl.src = url;
+//   imageEl.alt = alt;
+//   galleryEl.appendChild(image);
+//   const galleryList = document.querySelector('.gallery');
+//   galleryList.appendChild(galleryEl);
+//   return galleryList;
+// });
+
+// 2 спосіб
+// const makeGallery = ({ url, alt }) => {
+//   const galleryEl = document.createElement('li');
+//   const imageEl = document.createElement('img');
+//   imageEl.src = url;
+//   imageEl.alt = alt;
+  
+//   galleryEl.append(image);
+
+//   return galleryEl;
+// };
+
+// const makeGalleryImages = images.map(makeGallery);
+// const galleryList = document.querySelector('.gallery');
+
+// galleryList.append(...makeGalleryImages);
+
+// 3 спосіб
+const makeGallery = ({ url, alt }) => {
+  return `
+  <li class='gallery-item'><img src=${url} alt=${alt} </li>
+  `;
+}
+
+const galleryList = document.querySelector('.gallery');
+const makeGalleryImages = images
+  .map(makeGallery)
+  .join('');
+
+galleryList.insertAdjacentHTML('afterbegin', makeGalleryImages);
+
+
+  
