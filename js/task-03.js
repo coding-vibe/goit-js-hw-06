@@ -57,7 +57,7 @@ const makeGalleryImages = images
 
 galleryList.insertAdjacentHTML('afterbegin', makeGalleryImages);
 
-  console.log(galleryList)
+console.log(galleryList);
 
 
   
