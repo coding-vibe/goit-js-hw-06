@@ -3,9 +3,8 @@ const inputElDataLength = parseInt(inputEl.getAttribute('data-length'));
 
 const inputElValidation = event => {
     const inputElValue = event.currentTarget.value;
-    if (inputElValue.length >= inputElDataLength)
-        return inputEl.classList.add('valid');
-    return inputEl.classList.add('invalid');
+    inputElValue.length === inputElDataLength ? inputEl.classList.add('valid') : inputEl.classList.add('invalid');
+    return;
 };
 
 inputEl.addEventListener('blur', inputElValidation);

@@ -19,7 +19,7 @@ const images = [
 //   const imageEl = document.createElement('img');
 //   imageEl.src = url;
 //   imageEl.alt = alt;
-//   galleryEl.appendChild(image);
+//   galleryEl.appendChild(imageEl);
 //   const galleryList = document.querySelector('.gallery');
 //   galleryList.appendChild(galleryEl);
 //   return galleryList;
@@ -32,7 +32,7 @@ const images = [
 //   imageEl.src = url;
 //   imageEl.alt = alt;
   
-//   galleryEl.append(image);
+//   galleryEl.append(imageEl);
 
 //   return galleryEl;
 // };
@@ -45,16 +45,19 @@ const images = [
 // 3 спосіб
 const makeGallery = ({ url, alt }) => {
   return `
-  <li class='gallery-item'><img src=${url} alt=${alt} </li>
+  <li>
+  <img src=${url} alt="${alt}"/>
+  </li>
   `;
 }
-
 const galleryList = document.querySelector('.gallery');
 const makeGalleryImages = images
   .map(makeGallery)
   .join('');
 
 galleryList.insertAdjacentHTML('afterbegin', makeGalleryImages);
+
+  console.log(galleryList)
 
 
   
