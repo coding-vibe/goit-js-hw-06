@@ -7,19 +7,27 @@ function getRandomHexColor() {
 const btnCreate = document.querySelector('button[data-create]');
 const btnDestroy = document.querySelector('button[data-destroy]');
 const inputEl = document.querySelector('input');
+const boxesEl = document.querySelector('#boxes')
 
-const elemsCreation = event => {
+const onClickElemsCreation = () => {
   const inputElValue = inputEl.value;
-  if (event)
-    return createBoxes(inputElValue);
+  const createBoxes = (inputElValue) => {
+    const boxes = [];
+    let size = 30;
+    for (let i = 0; i < inputElValue; i += 1) {
+      const boxEl = document.createElement('div');
+      boxEl.style.backgroundColor = getRandomHexColor();
+      boxEl.style.width = `${size}px`;
+      boxEl.style.height = `${size}px`;
+      size += 10;
+      boxes.push(boxEl);
+    };
+    boxesEl.append(...boxes);
+    btnDestroy.addEventListener('click', () => { boxesEl.innerHTML = '' });
+  }
+  return createBoxes(inputElValue);
 };
 
-const createBoxes = amount => {
-  for (let i = 0; i <= amount; i += 1) {
-    const divElems = document.createElement('div');
-  }
-      }
-
-btnCreate.addEventListener('click', elemsCreation)
+btnCreate.addEventListener('click', onClickElemsCreation);
 
 
