@@ -8,18 +8,18 @@ const btnCreate = document.querySelector('button[data-create]');
 const btnDestroy = document.querySelector('button[data-destroy]');
 const inputEl = document.querySelector('input');
 const boxesEl = document.querySelector('#boxes');
+let lastDivSize = 30;
 
 const onClickElemsCreation = () => {
   const inputElValue = inputEl.value;
   const createBoxes = (inputElValue) => {
     const boxes = [];
-    let size = 30;
     for (let i = 0; i < inputElValue; i += 1) {
       const boxEl = document.createElement('div');
       boxEl.style.backgroundColor = getRandomHexColor();
-      boxEl.style.width = `${size}px`;
-      boxEl.style.height = `${size}px`;
-      size += 10;
+      boxEl.style.width = `${lastDivSize}px`;
+      boxEl.style.height = `${lastDivSize}px`;
+      lastDivSize += 10;
       boxes.push(boxEl);
     };
     boxesEl.append(...boxes);
